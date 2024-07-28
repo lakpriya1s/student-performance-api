@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'StudentPerformanceAPIGateway'
           slot-name: 'Production'
-          package: ./.net-app
+          package: D:\a\student-performance-api\student-performance-api\publish
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06E12B0C5FA549088E0A64FF62C223D9 }}
