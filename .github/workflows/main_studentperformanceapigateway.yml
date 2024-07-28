@@ -16,7 +16,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0' # Ensure to set the correct .NET version
+          dotnet-version: '6.0'
 
       - name: Build with dotnet
         run: dotnet build --configuration Release StudentPerformanceAPIGateway/StudentPerformanceAPIGateway.csproj
@@ -46,8 +46,6 @@ jobs:
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'StudentPerformanceAPIGateway'
-          slot-name: 'Production'
-          package: D:\a\student-performance-api\student-performance-api\publish
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06E12B0C5FA549088E0A64FF62C223D9 }}
+
+      - name: .net-app
+        run: ls
