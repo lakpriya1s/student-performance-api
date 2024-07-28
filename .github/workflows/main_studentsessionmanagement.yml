@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "StudentSessionManagement/**"
   workflow_dispatch:
 
 jobs:
@@ -16,7 +18,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0' # Ensure to set the correct .NET version
+          dotnet-version: "6.0"
 
       - name: Build with dotnet
         run: dotnet build --configuration Release StudentSessionManagement/StudentSessionManagement.csproj
@@ -34,17 +36,17 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -56,7 +58,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'StudentSessionManagement'
-          slot-name: 'Production'
+          app-name: "StudentSessionManagement"
+          slot-name: "Production"
           package: .
-          
