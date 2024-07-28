@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'StudentPerformanceAPIGateway'
           slot-name: 'Production'
-          package: ${{github.workspace}}/.net-app/publish
+          package: ./.net-app
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06E12B0C5FA549088E0A64FF62C223D9 }}
